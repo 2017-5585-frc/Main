@@ -9,6 +9,8 @@ import org.usfirst.frc.team5585.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5585.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.Compressor;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -97,6 +99,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        
     }
     
     /**
