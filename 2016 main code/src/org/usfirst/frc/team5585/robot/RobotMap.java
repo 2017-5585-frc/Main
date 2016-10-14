@@ -1,5 +1,5 @@
 package org.usfirst.frc.team5585.robot;
-import edu.wpi.first.wpilibj.Victor;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -23,7 +23,5 @@ public class RobotMap {
 	public static int solenoid1Port2=0;
 	
 	public static int upperShooterPort=2,
-					lowerShooterPort=3;
-	upperShooter= new Victor(upperShooterPort);
-	LowerShooter= new Victor(LowerShooterPort);
+					lowerShooterPort=3; 
 }
