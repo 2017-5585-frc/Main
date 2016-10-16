@@ -64,7 +64,7 @@ public class Shooter extends Subsystem {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //TODO setDefaultCommand(new startShooter());
+        //TODO setDefaultCommand(new RunShooter());
     }
 }
 

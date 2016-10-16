@@ -24,4 +24,6 @@ public class RobotMap {
 	
 	public static int upperShooterPort=2,
 					lowerShooterPort=3; 
+	public static int joystickPort=1,
+			xboxPort=0;
 }
