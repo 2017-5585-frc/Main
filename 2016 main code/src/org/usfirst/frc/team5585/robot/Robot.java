@@ -9,6 +9,8 @@ import org.usfirst.frc.team5585.robot.commands.*;
 import org.usfirst.frc.team5585.robot.subsystems.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.CameraServer;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -21,12 +23,15 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final	Shooter Shooter = new Shooter();
+	public static final Drivetrain Drivetrain = new Drivetrain();
      
 	
 	
 	public static OI oi;
 	Compressor compressor;
     Command autonomousCommand;
+    Command InitializeDrive;
+    Command DefaultArcadeDrive;
     SendableChooser chooser;
     CameraServer server = CameraServer.getInstance();
     /**
@@ -41,6 +46,8 @@ public class Robot extends IterativeRobot {
         chooser.addDefault("Default Auto", new ExampleCommand());
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
+        Drivetrain.init();
+        
     }
 	
 	/**

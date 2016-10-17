@@ -2,7 +2,11 @@ package org.usfirst.frc.team5585.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Talon;
+
+import org.usfirst.frc.team5585.robot.OI;
 import org.usfirst.frc.team5585.robot.RobotMap;
+import org.usfirst.frc.team5585.robot.commands.DefaultArcadeDrive;
+
 import edu.wpi.first.wpilibj.RobotDrive;
 
 /**
@@ -35,8 +39,8 @@ public class Drivetrain extends Subsystem {
 		frontLeft.stopMotor();
 		frontRight.stopMotor();
 	}
-	public void defaultArcade() {
-		
+	public void Arcade() {
+		drivetrain.arcadeDrive(OI.joystick);
 	}
     
     // Put methods for controlling this subsystem
@@ -45,6 +49,7 @@ public class Drivetrain extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    	setDefaultCommand(new DefaultArcadeDrive());
     }
 }
 
