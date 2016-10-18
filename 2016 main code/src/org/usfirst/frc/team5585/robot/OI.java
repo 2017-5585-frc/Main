@@ -1,9 +1,10 @@
 package org.usfirst.frc.team5585.robot;
 
-import edu.wpi.first.wpilibj.buttons.Button;
-import org.usfirst.frc.team5585.robot.commands.ExampleCommand;
-import edu.wpi.first.wpilibj.Joystick;
 
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import org.usfirst.frc.team5585.robot.commands.*;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -13,11 +14,9 @@ public class OI {
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
     // number it is.
-    Joystick xbox = new Joystick(1);
-    
-    Joystick joystick = new Joystick(0);
-    // Button button = new JoystickButton(stick, buttonNumber);
-    
+	public static Joystick xbox = new Joystick(RobotMap.xboxPort);
+    public static Joystick joystick = new Joystick(RobotMap.joystickPort);
+    public Button shooterPower = new JoystickButton(joystick, 2);
     // There are a few additional built in buttons you can use. Additionally,
     // by subclassing Button you can create custom triggers and bind those to
     // commands the same as any other Button.
@@ -30,12 +29,23 @@ public class OI {
     // until it is finished as determined by it's isFinished method.
     // button.whenPressed(new ExampleCommand());
     
+    
     // Run the command while the button is being held down and interrupt it once
     // the button is released.
     // button.whileHeld(new ExampleCommand());
     
+    
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
+    public OI() {
+    	shooterPower.whenPressed(new RunShooter());
+    }
+    public static int getElevation() {
+    	double throttleAxis = joystick.getRawAxis(3);
+    	int elevation = (int) Math.round(throttleAxis) - 90;
+    	elevation = elevation / 9;
+    	return elevation;
+    }
 }
 

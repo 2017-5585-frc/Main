@@ -5,12 +5,12 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import org.usfirst.frc.team5585.robot.commands.ExampleCommand;
-import org.usfirst.frc.team5585.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5585.robot.commands.*;
+import org.usfirst.frc.team5585.robot.subsystems.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.CameraServer;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -22,21 +22,32 @@ import edu.wpi.first.wpilibj.Compressor;
 public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+	public static final	Shooter Shooter = new Shooter();
+	public static final Drivetrain Drivetrain = new Drivetrain();
+     
+	
+	
 	public static OI oi;
-
+	Compressor compressor;
     Command autonomousCommand;
+    Command InitializeDrive;
+    Command DefaultArcadeDrive;
     SendableChooser chooser;
-
+    CameraServer server = CameraServer.getInstance();
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
+    	server.startAutomaticCapture("cam0");
+    	compressor.start();
 		oi = new OI();
         chooser = new SendableChooser();
         chooser.addDefault("Default Auto", new ExampleCommand());
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
+        Drivetrain.init();
+        
     }
 	
 	/**
@@ -99,7 +110,6 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        
     }
     
     /**
